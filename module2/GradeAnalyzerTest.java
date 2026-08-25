@@ -36,4 +36,20 @@ public class GradeAnalyzerTest {
         ArrayList<Integer> scores = new ArrayList<>(Arrays.asList(88, 88, 88)); 
         assertEquals(88.0, GradeAnalyzer.calculateAverage(scores)); 
     }
+
+    @Test
+    void calculateAverage_returnsExactAverage_forNewList(){
+        //create a new 10 digit list
+        ArrayList<Integer> scores = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+        //make sure the avg is exact
+        assertEquals(5.5, GradeAnalyzer.calculateAverage(scores));
+    }
+
+    @Test
+    void calculateAverage_returnsDouble_roundRepeatingDecimals(){
+        //testing whether method can return repeating decimals to a specified decimal place
+        ArrayList<Integer> scores = new ArrayList<>(Arrays.asList(10, 20, 70));
+        //avg should be to 3 sig figs
+        assertEquals(33.3, GradeAnalyzer.calculateAverage(scores), 0.1);
+    }
 }
